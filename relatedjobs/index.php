@@ -2,7 +2,7 @@
 session_start();
 
 //retreiving dom html parser file
-include "../assets/simple_html_dom.php";
+include "hidden";
 
 if(!isset($_SESSION["dashboard_username"])){
 
@@ -14,7 +14,7 @@ elseif(!isset($_SESSION["job_list"])){
 	header("location: ../dashboard/");
 	echo '<meta http-equiv="refresh" content="0;url=http://www.google.com/" />';
 }
-$rated_jobs = fopen("../assets/rated_jobs.txt", "r") or die("Not opening file.");
+$rated_jobs = fopen("hidden", "r") or die("Not opening file.");
 
 //redirecting to rate page if username not in text file
 $usernames = array();
@@ -32,7 +32,7 @@ if(!in_array($username, $usernames)){
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["submit"])) {
 
 	//remove user data from rated_jobs text file and redirect user to rate page
-	$the_rated_jobs = fopen("../assets/rated_jobs.txt", "r") or die("Unable to open file.");
+	$the_rated_jobs = fopen("hidden", "r") or die("Unable to open file.");
 
 	$all_info = array();
 	while(($line = fgets($the_rated_jobs))!== false){
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["submit"])) {
 	}
 	fclose($the_rated_jobs);
 
-	$rated_the_jobs = fopen("../assets/rated_jobs.txt", "w") or die("Unable to open file.");
+	$rated_the_jobs = fopen("hidden", "w") or die("Unable to open file.");
 	//adding each element of array as line in text file
 	foreach ($all_info as $key => $value) {
 		if($value=="delete"){
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["submit"])) {
 }
 
 //getting the two best jobs for user
-$rated_jobs_2 = fopen("../assets/rated_jobs.txt", "r") or die("Not opening file.");
+$rated_jobs_2 = fopen("hidden", "r") or die("Not opening file.");
 $best_jobs = array();
 while(($line = fgets($rated_jobs_2))!== false){
 	$the_username = explode("=", $line)[0];
