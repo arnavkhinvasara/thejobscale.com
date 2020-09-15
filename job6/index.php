@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include "../assets/simple_html_dom.php";
+include "hidden";
 
 if(!isset($_SESSION["dashboard_username"])){
 
