@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$state = strtoupper($state);
 	}
 
-	$userbase_file = fopen("assets/userbase.txt", "r") or die("Unable to open file.");
+	$userbase_file = fopen("hidden", "r") or die("Unable to open file.");
 
 	$all_info = array();
 	while(($line = fgets($userbase_file))!== false){
@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	//adding data to text file, based on condition
 	if ($first_name_err == "" and $last_name_err== "" and $email_err=="" and $city_err=="" and $state_err=="" and $username_err=="" and $password_err=="" and $confpw_err=="" and $skill_list_err=="") {
 		
-		$user_file = fopen("assets/userbase.txt", "a") or die("Not opening file.");
+		$user_file = fopen("hidden", "a") or die("Not opening file.");
 		$user_info = "\n".$username."={".$first_name.",".$last_name.",".$email.",".$city.",".$state.",".$password.",".$confpw."---";
 
 		fwrite($user_file, $user_info);
