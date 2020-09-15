@@ -7,7 +7,7 @@ if(!isset($_SESSION["dashboard_username"])){
 	echo '<meta http-equiv="refresh" content="0;url=http://www.google.com/" />';
 }
 
-$userbase_file = fopen("../assets/userbase.txt", "r") or die("Unable to open file.");
+$userbase_file = fopen("hidden", "r") or die("Unable to open file.");
 
 $city = "";
 $state = "";
@@ -35,7 +35,7 @@ while(($line = fgets($userbase_file))!== false){
 fclose($userbase_file);
 
 function jobs(){
-	$userbase_file = fopen("../assets/key_skills.txt", "r") or die("Unable to open file.");
+	$userbase_file = fopen("hidden", "r") or die("Unable to open file.");
 	//associative array for job title and associated list
 	$jobs_and_skills = array();
 	//while loop to add elements to array
@@ -121,7 +121,7 @@ function array_splitter ($x){
 //function to get array of jobs/salary as keys and skills as values
 function jobs_arrays ($x){
 	//open file
-	$userbase_file = fopen("../assets/key_skills.txt", "r") or die("Unable to open file.");
+	$userbase_file = fopen("hidden", "r") or die("Unable to open file.");
 
 	//function to get array with keys as job titles and values as skills associated with job
 	$jobs_skills_salary = array();
