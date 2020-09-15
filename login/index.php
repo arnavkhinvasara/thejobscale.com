@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$err_mess = "";
 
 	//obtaining list of all usernames
-	$userbase_file = fopen("../assets/userbase.txt", "r") or die("Unable to open file.");
+	$userbase_file = fopen("hidden", "r") or die("Unable to open file.");
 
 	$all_info = array();
 	while(($line = fgets($userbase_file))!== false){
