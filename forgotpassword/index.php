@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$again_confpw = $_POST["confpw_reenter"];
 
 	//seeing if email and username exist
-	$userbase_file = fopen("../assets/userbase.txt", "r") or die("Unable to open file.");
+	$userbase_file = fopen("hidden", "r") or die("Unable to open file.");
 
 	$all_info = array();
 	while(($line = fgets($userbase_file))!== false){
@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$again_password = trim($again_password);
 			$again_confpw = trim($again_confpw);
 
-			$userbase_file = fopen("../assets/userbase.txt", "r") or die("Unable to open file.");
+			$userbase_file = fopen("hidden", "r") or die("Unable to open file.");
 
 			$all_info = array();
 			while(($line = fgets($userbase_file))!== false){
@@ -84,7 +84,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			}
 			fclose($userbase_file);
 
-			$file_userbase = fopen("../assets/userbase.txt", "w") or die("Unable to open file.");
+			$file_userbase = fopen("hidden", "w") or die("Unable to open file.");
 			//adding each element of array as line in text file
 			foreach ($all_info as $key => $value) {
 				fwrite($file_userbase, $value);
