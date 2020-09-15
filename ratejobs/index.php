@@ -18,7 +18,7 @@ if(in_array("No Job Match", $jobs)){
 	echo '<meta http-equiv="refresh" content="0;url=http://www.google.com/" />';
 }
 //redirect if username in text file
-$rated_jobs = fopen("../assets/rated_jobs.txt", "r") or die("Not opening file.");
+$rated_jobs = fopen("hidden", "r") or die("Not opening file.");
 
 $usernames = array();
 while(($line = fgets($rated_jobs))!== false){
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$err_mess = "";
 
 		//opening text file to write to it
-		$job_base = fopen("../assets/rated_jobs.txt", "a") or die("Not opening file.");
+		$job_base = fopen("hidden", "a") or die("Not opening file.");
 
 		$line = "\n".$username."=".$best_jobs[0].",".$best_jobs[1];
 
